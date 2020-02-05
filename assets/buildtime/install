@@ -6,5 +6,5 @@ BUILD_PACKAGES_DEPENDENCIES=curl
 curl -SLO https://github.com/phppgadmin/phppgadmin/archive/master.zip
 unzip master.zip
 mv ./phppgadmin-master/* /var/www/html
-mv /var/www/html/conf/config.inc.php-dist /var/www/html/conf/config.inc.php
+mv /var/conf/config.inc.php-dist /var/www/html/conf/config.inc.php
 rm -rf master.zip phppgadmin-master
