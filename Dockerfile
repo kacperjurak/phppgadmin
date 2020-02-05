@@ -1,15 +1,17 @@
-FROM dockage/alpine-nginx-php-fpm:latest
+FROM php:7.4.2-apache
 
-LABEL maintainer="Mohammad Abdolirad <m.abdolirad@gmail.com>" \
+LABEL maintainer="Kacper Jurak <kacper@jurak.pl>" \
     org.label-schema.name="phppgadmin" \
-    org.label-schema.vendor="Dockage" \
+    org.label-schema.vendor="Kacper Jurak" \
     org.label-schema.description="phpPgAdmin Docker image, phpPgAdmin is a web-based administration tool for PostgreSQL." \
-    org.label-schema.vcs-url="https://github.com/dockage/phppgadmin" \
+    org.label-schema.vcs-url="https://github.com/kacperjurak/phppgadmin" \
     org.label-schema.license="MIT"
 
-ADD ./assets ${DOCKAGE_ETC_DIR}
+ADD ./assets /var
 
-RUN apk --no-cache --update add php5-pgsql postgresql \
-    && ${DOCKAGE_ETC_DIR}/buildtime/install \
-    && cp -ar ${DOCKAGE_ETC_DIR}/etc/* /etc \
-    && rm -rf /var/cache/apk/* ${DOCKAGE_ETC_DIR}/etc ${DOCKAGE_ETC_DIR}/buildtime
+RUN apt update && apt -y upgrade
+RUN apt install -y libpq-dev unzip \
+    && docker-php-ext-install pgsql \
+    && /var/buildtime/install \
+    && cp -ar /var/etc/* /etc \
+    && rm -rf /var/cache/apk/* /var/etc /var/buildtime

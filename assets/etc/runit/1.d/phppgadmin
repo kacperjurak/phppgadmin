@@ -27,7 +27,7 @@ PHP_PG_ADMIN_HELP_BASE=${PHP_PG_ADMIN_HELP_BASE:-'http://www.postgresql.org/docs
 PHP_PG_ADMIN_AJAX_REFRESH=${PHP_PG_ADMIN_AJAX_REFRESH:-3}
 
 
-cat ${DOCKAGE_ETC_DIR}/runtime/configs/phppgadmin/config.inc.php | \
+cat /var/runtime/configs/phppgadmin/config.inc.php | \
     sed -e "s#{{PHP_PG_ADMIN_SERVER_DESC}}#$PHP_PG_ADMIN_SERVER_DESC#g" \
         -e "s#{{PHP_PG_ADMIN_SERVER_HOST}}#$PHP_PG_ADMIN_SERVER_HOST#g" \
         -e "s#{{PHP_PG_ADMIN_SERVER_PORT}}#$PHP_PG_ADMIN_SERVER_PORT#g" \
@@ -51,4 +51,4 @@ cat ${DOCKAGE_ETC_DIR}/runtime/configs/phppgadmin/config.inc.php | \
         -e "s#{{PHP_PG_ADMIN_USE_XHTML_STRICT}}#$PHP_PG_ADMIN_USE_XHTML_STRICT#g" \
         -e "s#{{PHP_PG_ADMIN_HELP_BASE}}#$PHP_PG_ADMIN_HELP_BASE#g" \
         -e "s#{{PHP_PG_ADMIN_AJAX_REFRESH}}#$PHP_PG_ADMIN_AJAX_REFRESH#g" \
-        > ${DOCKAGE_WEBROOT_DIR}/conf/config.inc.php
+        > /var/conf/config.inc.php
