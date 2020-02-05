@@ -10,8 +10,10 @@ LABEL maintainer="Kacper Jurak <kacper@jurak.pl>" \
 ADD ./assets /var
 
 RUN apt update && apt -y upgrade
-RUN apt install -y libpq-dev unzip \
-    && docker-php-ext-install pgsql \
+RUN apt install -y libpq-dev unzip
+RUN docker-php-ext-install pgsql \
     && /var/buildtime/install \
     && cp -ar /var/etc/* /etc \
     && rm -rf /var/cache/apk/* /var/etc /var/buildtime
+
+#CMD /etc/init.d/phppgadmin start
