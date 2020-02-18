@@ -3,7 +3,7 @@ version: '2'
 services:
   phppgadmin:
     restart: always
-    image: dockage/phppgadmin:latest
+    build: ./
     ports:
     - "880:80"
     - "8443:443"
